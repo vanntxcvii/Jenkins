@@ -26,13 +26,13 @@ pipeline {
                     def number = script3.getNumber()
                     echo "The number is ${number}"
                 }
-                
+
             }
         }
         stage('Script 4') {
             steps {
                 script {
-                    def script4 = loadScript("script4.groovy")
+                    //def script4 = loadScript("script4.groovy")
                     def result = script4.multiplyNumbers(2, 3)
                     echo "The result is ${result}"
                 }
