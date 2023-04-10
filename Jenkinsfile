@@ -6,20 +6,27 @@ pipeline {
     stages {
         stage('Build Test Environment') {
             steps {
-                buildTestEnvironment()
+                script {
+                    buildTestEnvironment()
+                }
             }
-        }
         
+        }
+
         stage('Set Build Number') {
             steps {
-                def buildNumber = 123
-                setBuildNumber(buildNumber)
+                script {
+                    def buildNumber = 123
+                    setBuildNumber(buildNumber)
+                }
             }
         }
         
         stage('Get Value') {
             steps {
-                echo getValue()
+                script {
+                    echo getValue()
+                }
             }
         }
     }
