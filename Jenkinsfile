@@ -12,7 +12,7 @@ pipeline {
         stage('Hello') {
             steps {
                 script {
-                    def message = mySharedLibrary.vars.myMethod()
+                    def message = library('my-shared-library').myMethod()
                     echo message
                 }
             }
