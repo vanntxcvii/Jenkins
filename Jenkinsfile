@@ -2,20 +2,14 @@
 
 pipeline {
   agent any
-
+  
   stages {
-    stage('Deploy') {
+    stage('Say Hello and Goodbye') {
       steps {
         script {
-          deploy()
-        }
-      }
-    }
-
-    stage('Run Tests') {
-      steps {
-        script {
-          runTests()
+          def main = load 'main.groovy'
+          def message = main.sayHelloAndGoodbye('John')
+          println message
         }
       }
     }
