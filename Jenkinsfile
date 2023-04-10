@@ -11,10 +11,7 @@ pipeline {
         }
         stage('Hello') {
             steps {
-                script {
-                    def message = myMethod()
-                    echo message
-                }
+                myFirstStep()
             }
         }
     }
