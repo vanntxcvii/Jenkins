@@ -2,7 +2,7 @@
 
 pipeline {
     agent any
-    
+
     stages {
         stage('myStep') {
             steps{
@@ -12,7 +12,7 @@ pipeline {
         stage('Hello') {
             steps {
                 script {
-                    def message = mySharedLibrary.myMethod()
+                    def message = mySharedLibrary.vars.myMethod()
                     echo message
                 }
             }
