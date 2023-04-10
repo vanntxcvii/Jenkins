@@ -2,12 +2,23 @@
 
 pipeline {
   agent any
-  
+
   stages {
-    stage("Run myFirstStep") {
+    stage('Deploy') {
       steps {
-        myFirstStep()
+        script {
+          deploy()
+        }
+      }
+    }
+
+    stage('Run Tests') {
+      steps {
+        script {
+          runTests()
+        }
       }
     }
   }
 }
+
