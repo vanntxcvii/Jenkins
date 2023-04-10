@@ -1,19 +1,31 @@
-@Library('shared-library') _
+@Library('my-shared-library') _
 
 pipeline {
     agent any
-    
+
     stages {
-        stage('Greet') {
+        stage('Script 1') {
             steps {
-                greet('Jenkins')
+                script1.printMessage()
             }
         }
-        stage('Message') {
+        stage('Script 2') {
             steps {
-                def message = message()
+                def message = script2.getMessage()
                 echo message
-                echo utils.format(message)
+            }
+        }
+        stage('Script 3') {
+            steps {
+                def number = script3.getNumber()
+                echo "The number is ${number}"
+            }
+        }
+        stage('Script 4') {
+            steps {
+                def script4 = loadScript("script4.groovy")
+                def result = script4.multiplyNumbers(2, 3)
+                echo "The result is ${result}"
             }
         }
     }
