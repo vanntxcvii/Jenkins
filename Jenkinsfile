@@ -1,12 +1,19 @@
-@Library('my-shared-library') _
+@Library('shared-library') _
 
 pipeline {
     agent any
     
     stages {
-        stage('Print Greeting') {
+        stage('Greet') {
             steps {
-                printGreeting('World')
+                greet('Jenkins')
+            }
+        }
+        stage('Message') {
+            steps {
+                def message = message()
+                echo message
+                echo utils.format(message)
             }
         }
     }
