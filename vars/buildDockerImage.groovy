@@ -5,5 +5,5 @@ def call(String imageName) {
     CMD python3 -m http.server 8000
   """
   def dockerfileWithImageName = dockerfile.replaceAll("alpine:latest", imageName)
-  sh "echo '$dockerfileWithImageName' | sudo docker build -t $imageName -"
+  sh "echo '$dockerfileWithImageName' | docker build -t $imageName -"
 }

@@ -1,3 +1,3 @@
 def call(String appUrl) {
-  sh "sudo curl -sSf $appUrl > /dev/null"
+  sh "curl -sSf $appUrl > /dev/null"
 }
