@@ -4,10 +4,17 @@ pipeline {
     agent any
     
     stages {
-        stage('Example') {
+        stage('myStep') {
             steps{
-                myStep('Jenkins')
+                myStep('VanNT')
             }
+        }
+        stage('myMethod') {
+            steps {
+                script {
+                    def message = mySharedLibrary.vars.myMethod()
+                    echo message
+                }
         }
     }
 }
