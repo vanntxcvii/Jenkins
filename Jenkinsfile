@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        build()
+        script {
+          myLibrary.myBuild.build(job: 'myJob')
       }
     }
     stage('Test') {
