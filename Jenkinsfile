@@ -1,7 +1,12 @@
 @Library('my-shared-library') _
 
-stage('Example') {
-    myStep('Jenkins')
-    echo myVar
+pipeline {
+    agent any
+    
+    stages {
+        stage('Example') {
+            myStep('Jenkins')
+            echo myVar
+        }
+    }
 }
-
