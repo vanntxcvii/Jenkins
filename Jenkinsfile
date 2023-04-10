@@ -4,9 +4,9 @@ pipeline {
   agent any
 
   stages {
-    stage('Build Docker Image') {
+    stage('Hello World') {
       steps {
-        buildDockerImage('my-app')
+        myFunction 'Jenkins'
       }
     }
     
