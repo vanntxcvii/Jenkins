@@ -1,3 +1,3 @@
 def call(String imageName) {
-  sh "docker stop $(docker ps --filter ancestor=$imageName --quiet)"
+  sh "sudo docker stop $(docker ps --filter ancestor=$imageName --quiet)"
 }
