@@ -5,8 +5,10 @@ pipeline {
     
     stages {
         stage('Example') {
-            myStep('Jenkins')
-            echo myVar
+            steps{
+                myStep('Jenkins')
+                echo myVar
+            }
         }
     }
 }
