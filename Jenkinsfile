@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Hello') {
             steps {
-                myFirstStep()
+                mySecondStep()
             }
         }
     }
