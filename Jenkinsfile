@@ -2,41 +2,24 @@
 
 pipeline {
     agent any
-
+    
     stages {
-        stage('Script 1') {
+        stage('Build Test Environment') {
             steps {
-                script {
-                  script1.printMessage()
-                }
+                buildTestEnvironment()
             }
         }
-        stage('Script 2') {
+        
+        stage('Set Build Number') {
             steps {
-                script {
-                    def message = script2.getMessage()
-                    echo message
-                }
-                
+                def buildNumber = 123
+                setBuildNumber(buildNumber)
             }
         }
-        stage('Script 3') {
+        
+        stage('Get Value') {
             steps {
-                script {
-                    def number = script3.getNumber()
-                    echo "The number is ${number}"
-                }
-
-            }
-        }
-        stage('Script 4') {
-            steps {
-                script {
-                    //def script4 = loadScript("script4.groovy")
-                    def result = script4.multiplyNumbers(2, 3)
-                    echo "The result is ${result}"
-                }
-                
+                echo getValue()
             }
         }
     }
