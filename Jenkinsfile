@@ -7,7 +7,7 @@ pipeline {
     stage('Say Hello and Goodbye') {
       steps {
         script {
-          def main = load 'vars\main.groovy'
+          def main = load 'vars/main.groovy'
           def message = main.sayHelloAndGoodbye('John')
           println message
         }
