@@ -9,12 +9,13 @@ pipeline {
                 myStep('VanNT')
             }
         }
-        stage('myMethod') {
+        stage('Hello') {
             steps {
                 script {
-                    def message = mySharedLibrary.vars.myMethod()
+                    def message = mySharedLibrary.myMethod()
                     echo message
                 }
+            }
         }
     }
 }
