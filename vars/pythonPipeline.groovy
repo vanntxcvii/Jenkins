@@ -8,13 +8,12 @@ def call() {
 
     docker.image('python:latest').inside() {
       stage('Test') {
-        sh 'whoami'
         sh 'pip install -r requirements.txt'
         sh p.testCommand
       }
     }
 
-    if (env.BRANCH_NAME == 'master' && p.deployUponTestSuccess == true) {
+    if (env.BRANCH_NAME == 'main' && p.deployUponTestSuccess == true) {
       docker.image(p.deployToolImage).inside {
         stage('Deploy') {
           sh "echo ${p.deployCommand} ${p.deployEnvironment}"
