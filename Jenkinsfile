@@ -6,20 +6,26 @@ pipeline {
     stages {
         stage('Greet') {
             steps {
-                greet 'World'
+                script{
+                    greet 'World'
+                }
             }
         }
 
         stage('Bye') {
             steps {
-                bye 'World'
+                script {
+                    bye 'World'
+                }
             }
         }
 
         stage('Multiply') {
             steps {
-                def result = multiply 3, 4
-                echo "3 x 4 = ${result}"
+                script {
+                    def result = multiply 3, 4
+                    echo "3 x 4 = ${result}"
+                }
             }
         }
     }
