@@ -8,7 +8,7 @@ def call() {
 
     docker.image('python:latest').inside() {
       stage('Test') {
-        sh 'pip install -r requirements.txt --user'
+        sh 'sudo pip install -r requirements.txt --user'
         sh p.testCommand
       }
     }
