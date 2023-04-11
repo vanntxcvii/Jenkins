@@ -1,12 +1,23 @@
-@Library('my-shared-library@main') _
+@Library('my-shared-library') _
 
 pipeline {
   agent any
-
+  
   stages {
-    stage('Hello World') {
+    stage('Greet') {
       steps {
-        myFunction 'Jenkins'
+        script {
+          def message = greet()
+          echo message
+        }
+      }
+    }
+    stage('Goodbye') {
+      steps {
+        script {
+          def message = goodbye()
+          echo message
+        }
       }
     }
   }
