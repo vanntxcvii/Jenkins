@@ -1,17 +1,15 @@
-// vars/pythonPipeline.groovy
 def call() {
+    
   node {
     stage('Checkout') {
       checkout scm
     }
     def p = pipelineCfg()
 
-    if (p.runTests == true) {
-      docker.image(p.testImage).inside() {
-        stage('Test') {
-          sh 'pip install -r requirements.txt'
-          sh p.testCommand
-        }
+    docker.image('python:2.7.15-alpine').inside() {
+      stage('Test') {
+        sh 'pip install -r requirements.txt'
+        sh p.testCommand
       }
     }
 
