@@ -1,9 +1,8 @@
 @Library('my-shared-library@main') _
 
 pipeline {
-    agent {
-        any
-    }
+    agent any
+    
     options {
         skipStagesAfterUnstable()
     }
