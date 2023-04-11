@@ -6,9 +6,9 @@ def call() {
     }
     def p = pipelineCfg()
 
-    docker.image('python:2.7.15-alpine').inside() {
+    docker.image('python:latest').inside() {
       stage('Test') {
-        sh 'pip3 install -r requirements.txt'
+        sh 'pip install -r requirements.txt'
         sh p.testCommand
       }
     }
