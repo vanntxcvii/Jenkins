@@ -5,7 +5,7 @@ def dockerfilePath = 'Dockerfile'
 def contextPath = '.'
 def dockerArgs = ''
 
-def registryUrl = 'docker.io'
+def registryUrl = 'https://hub.docker.com/'
 def registryCredentialsId = 'dockerhub_ssh_key'
 
 pipeline {
