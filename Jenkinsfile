@@ -5,8 +5,8 @@ def dockerfilePath = 'Dockerfile'
 def contextPath = '.'
 def dockerArgs = ''
 
-def registryUrl = 'my-registry.com'
-def registryCredentialsId = 'my-registry-credentials'
+def registryUrl = 'docker.io'
+def registryCredentialsId = 'dockerhublogin'
 
 pipeline {
     agent any
