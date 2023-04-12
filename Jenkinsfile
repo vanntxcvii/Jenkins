@@ -1,36 +1,13 @@
-@Library('my-shared-library') _
-
-def dockerImage = 'elessarxcvii/my-python-app'
-def dockerfilePath = 'app/Dockerfile'
-def contextPath = 'app/'
-
 pipeline {
     agent any
 
     stages {
-        stage('Build Python App') {
+        stage('Build and Push Docker Image') {
             steps {
-                script {
-                   sh 'python -m pip install -r app/requirements.txt'
-                }
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    buildDockerImage(dockerImage: dockerImage, dockerfilePath: dockerfilePath, contextPath: contextPath)
-                }
-            }
-        }
-
-        stage('Push Docker Image') {
-            steps {
-                script {
-                      withCredentials([sshUserPrivateKey(credentialsId: 'dockerhub_ssh_key', keyFileVariable: 'SSH_KEY_FILE')]) {
-                        pushDockerImage(dockerImage: dockerImage, dockerUsername: 'elessarxcvii', dockerPassword: 'my-password')
-                }
-               }
+                sh 'docker build -t my-jenkins-image .'
+                sh 'sh scripts/login_to_dockerhub.sh'
+                sh 'docker tag my-jenkins-image elessarxcvii/my-jenkins-image'
+                sh 'docker push elessarxcvii/my-jenkins-image'
             }
         }
     }
