@@ -5,9 +5,9 @@ def call() {
   def dockerfile_path = "Dockerfile"
   def docker_build_args = ""
   def docker_registry_url = "https://hub.docker.com/repository/docker/elessarxcvii/my-jenkins-image"
-  def docker_push_credential_id = "dockerhublogin"
+  def docker_push_credential_id = "dockerhub_ssh_key"
 
-  docker.withRegistry(docker_registry_url, docker_push_credential_id) {
+  docker.withRegistry(docker_registry_url) {
     def customImage = docker.build(docker_tag, "-f ${dockerfile_path} ${docker_build_args} .")
   }
 }
