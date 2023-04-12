@@ -4,7 +4,7 @@ def call() {
   def docker_tag = "${app_name}:${app_version}"
   def dockerfile_path = "Dockerfile"
   def docker_build_args = ""
-  def docker_registry_url = "https://hub.docker.com/repository/docker/elessarxcvii/my-jenkins-image"
+  def docker_registry_url = "elessarxcvii/my-jenkins-image"
   def docker_push_credential_id = "dockerhub_ssh_key"
 
   docker.withRegistry(docker_registry_url) {
