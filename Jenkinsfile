@@ -29,9 +29,7 @@ pipeline {
         }
     }
 }
-This Jenkinsfile first loads the my-library shared library using the @Library annotation, then defines the Docker image name, path to the Dockerfile, and the context path for building the image.
 
-The pipeline block defines the stages of the pipeline. The first stage
 
 
 
