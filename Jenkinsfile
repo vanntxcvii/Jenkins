@@ -1,29 +1,31 @@
 @Library('my-shared-library') _
 
-def imageName = 'my-image'
-def dockerfilePath = 'Dockerfile'
-def contextPath = '.'
-def dockerArgs = ''
-
-def registryUrl = 'https://hub.docker.com/'
-def registryCredentialsId = 'dockerhub_ssh_key'
-
 pipeline {
-    agent any
-
+    agent {
+        dockerfile {
+            filename 'Dockerfile'
+        }
+    }
     stages {
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
                 script {
-                    buildDocker(imageName, dockerfilePath, contextPath, dockerArgs)
+                    checkout scm
+                    sh 'python setup.py sdist bdist_wheel'
                 }
             }
         }
-
-        stage('Push Docker Image') {
+        stage('Test') {
             steps {
                 script {
-                    dockerPush(imageName, registryUrl, registryCredentialsId)
+                    sh 'python setup.py test'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    sh 'python deploy.py'
                 }
             }
         }
