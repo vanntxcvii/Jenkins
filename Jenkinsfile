@@ -1,31 +1,19 @@
 @Library('my-shared-library') _
 
 pipeline {
-    agent {
-        dockerfile {
-            filename 'Dockerfile'
-        }
-    }
+    agent any
     stages {
-        stage('Build') {
+        stage('Build image') {
             steps {
                 script {
-                    checkout scm
-                    sh 'python setup.py sdist bdist_wheel'
+                    buildDockerImage()
                 }
             }
         }
-        stage('Test') {
+        stage('Push image') {
             steps {
                 script {
-                    sh 'python setup.py test'
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                script {
-                    sh 'python deploy.py'
+                    dockerPush()
                 }
             }
         }
