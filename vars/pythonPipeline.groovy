@@ -8,7 +8,6 @@ def call() {
 
     docker.image('python:latest').inside() {
       stage('Test') {
-        sh 'whoami'
         sh 'echo $HOME'
         sh 'pip install -r requirements.txt'
         sh p.testCommand
