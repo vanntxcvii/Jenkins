@@ -6,7 +6,7 @@ def contextPath = '.'
 def dockerArgs = ''
 
 def registryUrl = 'docker.io'
-def registryCredentialsId = 'dockerhublogin'
+def registryCredentialsId = 'dockerhub_ssh_key'
 
 pipeline {
     agent any
