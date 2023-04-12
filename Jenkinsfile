@@ -8,10 +8,30 @@ def dockerArgs = ''
 def registryUrl = 'my-registry.com'
 def registryCredentialsId = 'my-registry-credentials'
 
-stage('Build Docker Image') {
-    buildDocker(imageName, dockerfilePath, contextPath, dockerArgs)
-}
+pipeline {
+    agent any
 
-stage('Push Docker Image') {
-    dockerPush(imageName, registryUrl, registryCredentialsId)
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    buildDocker(imageName, dockerfilePath, contextPath, dockerArgs)
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    dockerPush(imageName, registryUrl, registryCredentialsId)
+                }
+            }
+        }
+    }
 }
+This Jenkinsfile first loads the my-library shared library using the @Library annotation, then defines the Docker image name, path to the Dockerfile, and the context path for building the image.
+
+The pipeline block defines the stages of the pipeline. The first stage
+
+
+
